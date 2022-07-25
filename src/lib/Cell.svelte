@@ -7,12 +7,17 @@
 
   const hue = Math.floor(Math.random() * 360);
   const endLevel = getContext("endLevel");
+  const openSound = getContext("openSound");
+  const winSound = getContext("winSound");
 
   function selectCell() {
     if (enabled) {
       cells.openCell(index);
       if (isTarget) {
         endLevel();
+        winSound.play();
+      } else {
+        openSound.play();
       }
     }
   }

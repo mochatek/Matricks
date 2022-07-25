@@ -30,11 +30,11 @@
 
 <style>
   @font-face {
-    font-family: 'Bugebol huomenna';
+    font-family: "Bugebol huomenna";
     font-style: normal;
     font-weight: 400;
-    src: url('../../public/Bugebol huomenna.woff') format('woff');
-}
+    src: url("../../public/Bugebol huomenna.woff") format("woff");
+  }
   header {
     width: 100%;
     background-color: hsla(0, 0%, 100%, 0.25);

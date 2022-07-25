@@ -5,6 +5,8 @@
   import Dashboard from "./lib/Dashboard.svelte";
   import Matrix from "./lib/Matrix.svelte";
   import Footer from "./lib/Footer.svelte";
+  import OpenSound from "./assets/open_cell.wav";
+  import WinSound from "./assets/find_treasure.wav";
   import { MAX_SIZE } from "./constants";
 
   let level = 1;
@@ -16,7 +18,7 @@
     if (level < MAX_SIZE - 1) {
       level++;
     } else {
-      best.compareAndUpdate(score)
+      best.compareAndUpdate(score);
     }
   }
   function endLevel() {
@@ -30,6 +32,8 @@
   }
 
   setContext("endLevel", endLevel);
+  setContext("openSound", new Audio(OpenSound));
+  setContext("winSound", new Audio(WinSound));
 </script>
 
 <Header on:playAgain={playAgain} />
