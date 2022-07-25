@@ -12,10 +12,10 @@
 <style>
   section {
     display: grid;
-    grid-template-rows: repeat(var(--size), 1fr);
     grid-template-columns: repeat(var(--size), 1fr);
-    height: 100%;
-    gap: 0.1rem;
-    padding: 0 0.1rem;
+    max-height: 100%;
+    aspect-ratio: 1;
+    margin: auto;
+    gap: 0.5rem;
   }
 </style>

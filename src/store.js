@@ -1,6 +1,5 @@
-import { writable } from "svelte/store";
-
-const MAX_SIZE = 6;
+import { writable, get } from "svelte/store";
+import { MAX_SIZE, LOCAL_STORAGE_KEY } from "./constants.js";
 
 function createCells() {
   function initializeCells(level) {
@@ -33,4 +32,26 @@ function createCells() {
   };
 }
 
+function createBest() {
+  const bestScore = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (bestScore === null) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, "0");
+  }
+
+  const best = writable(+bestScore);
+
+  const compareAndUpdate = (newScore) => {
+    if (get(best) < newScore) {
+      best.set(newScore);
+      localStorage.setItem(LOCAL_STORAGE_KEY, `${newScore}`);
+    }
+  };
+
+  return {
+    subscribe: best.subscribe,
+    compareAndUpdate,
+  };
+}
+
 export const cells = createCells();
+export const best = createBest();
